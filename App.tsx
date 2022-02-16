@@ -13,6 +13,7 @@ import {
   StatusBar,
   StyleSheet,
   useColorScheme,
+  View,
 } from 'react-native';
 import Button from './src/Button';
 import {ThemeProvider} from './src/Theme';
@@ -24,15 +25,26 @@ const App: () => Node = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Button variant={undefined} label={undefined} />
       <ThemeProvider value={defaultTheme}>
-        <Button variant={undefined} label={undefined} />
+        <View style={styles.view}>
+          <Button variant="filled" label={undefined} />
+          <Button variant="outline" label={undefined} />
+          <Button variant="ghost" label={undefined} />
+          <Button size="small" label={undefined} />
+          <Button variant="outline" size="large" label={undefined} />
+          <Button size="large" label={undefined} />
+        </View>
       </ThemeProvider>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  view: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,

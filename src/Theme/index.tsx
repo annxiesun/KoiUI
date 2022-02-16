@@ -1,4 +1,5 @@
 import {createContext, useContext} from 'react';
+import {StyleProp, ViewStyle, TextStyle, ImageStyle} from 'react-native';
 
 function createCtx<A extends {} | null>() {
   const ctx = createContext<A | undefined>(undefined);
@@ -15,21 +16,33 @@ function createCtx<A extends {} | null>() {
 // Usage:
 
 // We still have to specify a type, but no default!
-interface Component {
+interface Color {
   [key: string]: string;
+}
+interface Button {
+  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+}
+interface KoiButton {
+  filled: Button;
+  outline: Button;
+  ghost: Button;
+  small: Button;
+  medium: Button;
+  large: Button;
 }
 
 interface Palette {
-  primary: Component;
-  success: Component;
-  warning: Component;
-  error: Component;
+  primary: Color;
+  success: Color;
+  warning: Color;
+  error: Color;
 }
 
 interface Override {
-  [key: string]: Component;
+  KoiButton: KoiButton;
 }
-interface Theme {
+export interface Theme {
   palette: Palette;
   override: Override;
 }
