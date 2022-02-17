@@ -6,9 +6,15 @@ import defaultTheme from '../Theme/defaultTheme';
 
 interface TypographyProps {
   variant?: string;
+  style: object;
 }
 
-const Typography: FC<TypographyProps> = ({variant, children, ...other}) => {
+const Typography: FC<TypographyProps> = ({
+  variant,
+  children,
+  style,
+  ...other
+}) => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
@@ -17,9 +23,9 @@ const Typography: FC<TypographyProps> = ({variant, children, ...other}) => {
   const typography = theme.typography;
 
   return (
-    <View {...other}>
-      <Text style={typography[variant]}>{children}</Text>
-    </View>
+    <Text {...other} style={[style, typography[variant]]}>
+      {children}
+    </Text>
   );
 };
 

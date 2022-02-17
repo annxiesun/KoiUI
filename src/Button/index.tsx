@@ -1,6 +1,7 @@
 import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {Typography} from '..';
 import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 
@@ -26,6 +27,7 @@ const Button: FC<ButtonProps> = ({
 
   let variantStyle;
   let sizeStyle;
+  let typography;
 
   switch (variant) {
     case 'outline':
@@ -41,18 +43,25 @@ const Button: FC<ButtonProps> = ({
   switch (size) {
     case 'small':
       sizeStyle = styles.small;
+      typography = 'body2';
       break;
     case 'large':
       sizeStyle = styles.large;
+      typography = 'h3';
       break;
     default:
       sizeStyle = styles.medium;
+      typography = 'body1';
   }
 
   return (
     <View style={style} {...other}>
       <TouchableOpacity style={[variantStyle.base, sizeStyle.base]}>
-        <Text style={[variantStyle.text, sizeStyle.text]}>{children}</Text>
+        <Typography
+          variant={typography}
+          style={[variantStyle.text, sizeStyle.text]}>
+          {children}
+        </Typography>
       </TouchableOpacity>
     </View>
   );

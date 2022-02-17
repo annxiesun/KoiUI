@@ -51,7 +51,6 @@ const defaultTheme: Theme = {
       filled: {
         base: {
           backgroundColor: 'red',
-          borderRadius: 4,
         },
         text: {
           color: 'white',
@@ -62,11 +61,9 @@ const defaultTheme: Theme = {
           backgroundColor: 'transparent',
           borderWidth: 1,
           borderColor: 'red',
-          borderRadius: 4,
         },
         text: {
           color: 'red',
-          borderRadius: 4,
         },
       },
       ghost: {
@@ -79,20 +76,23 @@ const defaultTheme: Theme = {
         base: {
           paddingVertical: 10,
           paddingHorizontal: 15,
+          borderRadius: 4,
         },
         text: {},
       },
       medium: {
         base: {
-          paddingVertical: 15,
-          paddingHorizontal: 20,
+          paddingVertical: 10,
+          paddingHorizontal: 30,
+          borderRadius: 4,
         },
         text: {},
       },
       large: {
         base: {
-          paddingVertical: 20,
-          paddingHorizontal: 25,
+          paddingVertical: 10,
+          paddingHorizontal: 40,
+          borderRadius: 4,
         },
         text: {},
       },
