@@ -19,11 +19,39 @@ const defaultTheme: Theme = {
       default: '##58A5FF',
     },
   },
+  typography: {
+    h1: {
+      fontFamily: 'Poppins',
+      fontWeight: '600',
+      fontSize: 48,
+    },
+    h2: {
+      fontFamily: 'Poppins',
+      fontWeight: '600',
+      fontSize: 36,
+    },
+    h3: {
+      fontFamily: 'Poppins',
+      fontWeight: '500',
+      fontSize: 24,
+    },
+    body1: {
+      fontFamily: 'Poppins',
+      fontWeight: '400',
+      fontSize: 16,
+    },
+    body2: {
+      fontFamily: 'Poppins',
+      fontWeight: '400',
+      fontSize: 14,
+    },
+  },
   override: {
     KoiButton: {
       filled: {
         base: {
           backgroundColor: 'red',
+          borderRadius: 4,
         },
         text: {
           color: 'white',
@@ -38,6 +66,7 @@ const defaultTheme: Theme = {
         },
         text: {
           color: 'red',
+          borderRadius: 4,
         },
       },
       ghost: {

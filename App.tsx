@@ -14,9 +14,9 @@ import {
   StyleSheet,
   useColorScheme,
   View,
+  Text,
 } from 'react-native';
-import Button from './src/Button';
-import {ThemeProvider} from './src/Theme';
+import {Button, ThemeProvider, Typography} from './src';
 import defaultTheme from './src/Theme/defaultTheme';
 
 const App: () => Node = () => {
@@ -27,13 +27,20 @@ const App: () => Node = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ThemeProvider value={defaultTheme}>
         <View style={styles.view}>
-          <Button variant="filled" label={undefined} />
-          <Button variant="outline" label={undefined} />
-          <Button variant="ghost" label={undefined} />
-          <Button size="small" label={undefined} />
-          <Button variant="outline" size="large" label={undefined} />
-          <Button size="large" label={undefined} />
+          <Button variant="filled">Filled</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button size="small">Smallll</Button>
+          <Button variant="outline" size="large">
+            Large
+          </Button>
+          <Button size="large">Large</Button>
         </View>
+        <Typography variant="h1">Header1</Typography>
+        <Typography variant="h2">Header2</Typography>
+        <Typography variant="h3">Header3</Typography>
+        <Typography variant="body1">body1</Typography>
+        <Typography variant="body2">body2</Typography>
       </ThemeProvider>
     </SafeAreaView>
   );

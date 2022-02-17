@@ -19,6 +19,7 @@ function createCtx<A extends {} | null>() {
 interface Color {
   [key: string]: string;
 }
+
 interface Button {
   base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
   text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
@@ -39,11 +40,20 @@ interface Palette {
   error: Color;
 }
 
+interface Typography {
+  h1: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  h2: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  h3: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  body1: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  body2: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+}
+
 interface Override {
   KoiButton: KoiButton;
 }
 export interface Theme {
   palette: Palette;
+  typography: Typography;
   override: Override;
 }
 

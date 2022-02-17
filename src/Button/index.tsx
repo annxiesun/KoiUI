@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 
 interface ButtonProps {
-  variant: string;
+  variant?: string;
+  size?: string;
+  style?: Object;
+  children?: ReactElement | ReactText;
 }
 
-const Button = ({variant, size, label}): JSX.Element => {
+const Button: FC<ButtonProps> = ({
+  variant,
+  size,
+  children,
+  style,
+  ...other
+}): JSX.Element => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
@@ -41,12 +50,10 @@ const Button = ({variant, size, label}): JSX.Element => {
   }
 
   return (
-    <View>
-      {
-        <TouchableOpacity style={[variantStyle.base, sizeStyle.base]}>
-          <Text style={[variantStyle.text, sizeStyle.text]}>Hello</Text>
-        </TouchableOpacity>
-      }
+    <View style={style} {...other}>
+      <TouchableOpacity style={[variantStyle.base, sizeStyle.base]}>
+        <Text style={[variantStyle.text, sizeStyle.text]}>{children}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -54,6 +61,8 @@ const Button = ({variant, size, label}): JSX.Element => {
 export default Button;
 
 Button.propTypes = {
+  style: PropTypes.object,
+  children: PropTypes.node,
   variant: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
 };
