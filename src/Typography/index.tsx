@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import PropTypes from 'prop-types';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 
 interface TypographyProps {
   variant?: string;
-  style: object;
+  style?: object;
 }
 
 const Typography: FC<TypographyProps> = ({

@@ -52,9 +52,9 @@ interface Override {
   KoiButton: KoiButton;
 }
 export interface Theme {
-  palette: Palette;
-  typography: Typography;
-  override: Override;
+  palette?: Palette;
+  typography?: Typography;
+  override?: Override;
 }
 
 export const [useTheme, ThemeProvider] = createCtx<Theme>();

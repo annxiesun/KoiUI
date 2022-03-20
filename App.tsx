@@ -49,8 +49,9 @@ const App: () => Node = () => {
 const styles = StyleSheet.create({
   view: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+
+    width: '100%',
   },
   sectionContainer: {
     marginTop: 32,

@@ -1,6 +1,6 @@
 import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {TouchableOpacity, GestureResponderEvent} from 'react-native';
 import {Typography} from '..';
 import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
@@ -10,6 +10,9 @@ interface ButtonProps {
   size?: string;
   style?: Object;
   children?: ReactElement | ReactText;
+  onPress?: (event: GestureResponderEvent) => void;
+  color?: string;
+  status?: string;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -17,6 +20,7 @@ const Button: FC<ButtonProps> = ({
   size,
   children,
   style,
+  onPress,
   ...other
 }): JSX.Element => {
   var theme = useTheme();
@@ -25,45 +29,30 @@ const Button: FC<ButtonProps> = ({
   }
   const styles = theme.override.KoiButton;
 
-  let variantStyle;
-  let sizeStyle;
   let typography;
-
-  switch (variant) {
-    case 'outline':
-      variantStyle = styles.outline;
-      break;
-    case 'ghost':
-      variantStyle = styles.ghost;
-      break;
-    default:
-      variantStyle = styles.filled;
-  }
 
   switch (size) {
     case 'small':
-      sizeStyle = styles.small;
       typography = 'body2';
       break;
     case 'large':
-      sizeStyle = styles.large;
       typography = 'h3';
       break;
     default:
-      sizeStyle = styles.medium;
       typography = 'body1';
   }
 
   return (
-    <View style={style} {...other}>
-      <TouchableOpacity style={[variantStyle.base, sizeStyle.base]}>
-        <Typography
-          variant={typography}
-          style={[variantStyle.text, sizeStyle.text]}>
-          {children}
-        </Typography>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      {...other}
+      onPress={onPress}
+      style={[style, styles[variant].base, styles[size].base]}>
+      <Typography
+        variant={typography}
+        style={[styles[variant].text, styles[size].text]}>
+        {children}
+      </Typography>
+    </TouchableOpacity>
   );
 };
 
@@ -71,7 +60,6 @@ export default Button;
 
 Button.propTypes = {
   style: PropTypes.object,
-  children: PropTypes.node,
   variant: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
 };

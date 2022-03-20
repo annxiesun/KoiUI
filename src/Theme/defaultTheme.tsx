@@ -1,6 +1,7 @@
 import {Theme} from './index';
+import createTheme from './createTheme';
 
-const defaultTheme: Theme = {
+const defaultPalette: Theme = createTheme({
   palette: {
     success: {
       light: '#F0FDF6',
@@ -16,9 +17,12 @@ const defaultTheme: Theme = {
     },
     primary: {
       light: '#EEF6FF',
-      default: '##58A5FF',
+      default: '#58A5FF',
     },
   },
+});
+
+const defaultTheme: Theme = createTheme(defaultPalette, {
   typography: {
     h1: {
       fontFamily: 'Poppins',
@@ -50,7 +54,7 @@ const defaultTheme: Theme = {
     KoiButton: {
       filled: {
         base: {
-          backgroundColor: 'red',
+          backgroundColor: defaultPalette.palette.primary.default,
         },
         text: {
           color: 'white',
@@ -60,20 +64,21 @@ const defaultTheme: Theme = {
         base: {
           backgroundColor: 'transparent',
           borderWidth: 1,
-          borderColor: 'red',
+          borderColor: defaultPalette.palette.primary.default,
         },
         text: {
-          color: 'red',
+          color: defaultPalette.palette.primary.default,
         },
       },
       ghost: {
         base: {},
         text: {
-          color: 'red',
+          color: defaultPalette.palette.primary.default,
         },
       },
       small: {
         base: {
+          alignItems: 'center',
           paddingVertical: 10,
           paddingHorizontal: 15,
           borderRadius: 4,
@@ -82,6 +87,7 @@ const defaultTheme: Theme = {
       },
       medium: {
         base: {
+          alignItems: 'center',
           paddingVertical: 10,
           paddingHorizontal: 30,
           borderRadius: 4,
@@ -90,6 +96,7 @@ const defaultTheme: Theme = {
       },
       large: {
         base: {
+          alignItems: 'center',
           paddingVertical: 10,
           paddingHorizontal: 40,
           borderRadius: 4,
@@ -98,6 +105,6 @@ const defaultTheme: Theme = {
       },
     },
   },
-};
+});
 
 export default defaultTheme;
