@@ -14,20 +14,30 @@ import {
   StyleSheet,
   useColorScheme,
   View,
-  Text,
 } from 'react-native';
-import {Button, ThemeProvider, Typography} from './src';
-import defaultTheme from './src/Theme/defaultTheme';
+import {Button, ThemeProvider, Typography, Icon} from './src';
+import {defaultTheme, createTheme} from './src/Theme';
+import {Icon as EvaIcon} from 'react-native-eva-icons';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  let theme2 = createTheme(defaultTheme, {
+    typography: {
+      body1: {
+        fontFamily: 'Poppins',
+        fontWeight: '600',
+        fontSize: 29,
+      },
+    },
+  });
+
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ThemeProvider value={defaultTheme}>
+      <ThemeProvider value={theme2}>
         <View style={styles.view}>
-          <Button variant="filled">Filled</Button>
+          <Button variant="default">Filled</Button>
           <Button variant="outline">Outline</Button>
           <Button variant="ghost">Ghost</Button>
           <Button size="small">Smallll</Button>
@@ -35,6 +45,7 @@ const App: () => Node = () => {
             Large
           </Button>
           <Button size="large">Large</Button>
+          <Icon name="github" fill="black" />
         </View>
         <Typography variant="h1">Header1</Typography>
         <Typography variant="h2">Header2</Typography>

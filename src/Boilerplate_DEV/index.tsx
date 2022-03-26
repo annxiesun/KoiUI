@@ -28,5 +28,5 @@ SOMETHING.propTypes = {
 };
 
 SOMETHING.defaultProps = {
-  variant: 'filled',
+  variant: 'default',
 };

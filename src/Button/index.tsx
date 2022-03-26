@@ -2,7 +2,7 @@ import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableOpacity, GestureResponderEvent} from 'react-native';
 import {Typography} from '..';
-import {useTheme} from '../Theme';
+import {useTheme} from '../Theme/theme';
 import defaultTheme from '../Theme/defaultTheme';
 
 interface ButtonProps {
@@ -65,6 +65,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  variant: 'filled',
+  variant: 'default',
   size: 'medium',
 };

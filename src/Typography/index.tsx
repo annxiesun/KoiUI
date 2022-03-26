@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
-import {useTheme} from '../Theme';
+import {useTheme} from '../Theme/theme';
 import defaultTheme from '../Theme/defaultTheme';
 
 interface TypographyProps {

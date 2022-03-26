@@ -1,4 +1,4 @@
-import {Theme} from './index';
+import {Theme} from './theme';
 import createTheme from './createTheme';
 
 const defaultPalette: Theme = createTheme({
@@ -52,7 +52,7 @@ const defaultTheme: Theme = createTheme(defaultPalette, {
   },
   override: {
     KoiButton: {
-      filled: {
+      default: {
         base: {
           backgroundColor: defaultPalette.palette.primary.default,
         },
@@ -103,6 +103,9 @@ const defaultTheme: Theme = createTheme(defaultPalette, {
         },
         text: {},
       },
+    },
+    KoiIcon: {
+      default: {},
     },
   },
 });
