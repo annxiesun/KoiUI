@@ -107,6 +107,26 @@ const defaultTheme: Theme = createTheme(defaultPalette, {
     KoiIcon: {
       default: {},
     },
+    KoiInput: {
+      default: {
+        base: {
+          color: 'black',
+          borderWidth: 0,
+          backgroundColor: 'lightgrey',
+          padding: 8,
+        },
+        text: {
+          fontFamily: 'Poppins',
+          fontSize: 16,
+        },
+        iconLeft: {
+          marginRight: 16,
+        },
+        iconRight: {
+          marginLeft: 16,
+        },
+      },
+    },
   },
 });
 

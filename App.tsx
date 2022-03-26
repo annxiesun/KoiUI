@@ -15,9 +15,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {Button, ThemeProvider, Typography, Icon} from './src';
+import {Button, ThemeProvider, Typography, Icon, Input} from './src';
 import {defaultTheme, createTheme} from './src/Theme';
-import {Icon as EvaIcon} from 'react-native-eva-icons';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -52,6 +51,7 @@ const App: () => Node = () => {
         <Typography variant="h3">Header3</Typography>
         <Typography variant="body1">body1</Typography>
         <Typography variant="body2">body2</Typography>
+        <Input iconLeft="github" />
       </ThemeProvider>
     </SafeAreaView>
   );

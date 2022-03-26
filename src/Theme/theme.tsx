@@ -27,6 +27,13 @@ interface Button {
 
 interface Icon {}
 
+interface Input {
+  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  iconLeft: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  iconRight: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+}
+
 interface KoiButton {
   default: Button;
   outline: Button;
@@ -38,6 +45,10 @@ interface KoiButton {
 
 interface KoiIcon {
   default: Icon;
+}
+
+interface KoiInput {
+  default: Input;
 }
 
 interface Palette {
@@ -58,6 +69,7 @@ interface Typography {
 interface Override {
   KoiButton: KoiButton;
   KoiIcon: KoiIcon;
+  KoiInput: KoiInput;
 }
 export interface Theme {
   palette?: Palette;
