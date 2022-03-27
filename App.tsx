@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
+import type {ReactNode} from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -18,7 +18,7 @@ import {
 import {Button, ThemeProvider, Typography, Icon, Input} from './src';
 import {defaultTheme, createTheme} from './src/Theme';
 
-const App: () => Node = () => {
+const App: () => ReactNode = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   let theme2 = createTheme(defaultTheme, {
