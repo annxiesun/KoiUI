@@ -1,6 +1,6 @@
 {
   "name": "react-native-koi-ui",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "private": false,
   "scripts": {
     "android": "react-native run-android",

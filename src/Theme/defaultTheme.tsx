@@ -1,6 +1,7 @@
 import {defaultValues} from './defaultValues';
 import {defaultFormTheme} from './formTheme';
-import {createTheme, Theme} from './';
+import {Theme} from './theme';
+import {createTheme} from './themeHooks';
 
 const defaultTheme1: Theme = createTheme(defaultValues, {
   override: {

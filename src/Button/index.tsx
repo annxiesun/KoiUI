@@ -1,6 +1,6 @@
 import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {Typography} from '..';
 import {useTheme} from '../Theme/theme';
 import defaultTheme from '../Theme/defaultTheme';
@@ -51,13 +51,21 @@ const Button: FC<ButtonProps> = ({
       {...other}
       onPress={onPress}
       style={[style, styles[variant].base, styles[size].base]}>
-      {accentLeft && accentLeft}
+      {accentLeft && (
+        <View style={[styles[variant].accentLeft, styles[size].accentLeft]}>
+          {accentLeft}
+        </View>
+      )}
       <Typography
         variant={typography}
         style={[styles[variant].text, styles[size].text]}>
         {children}
       </Typography>
-      {accentRight && accentRight}
+      {accentRight && (
+        <View style={[styles[variant].accentRight, styles[size].accentRight]}>
+          {accentRight}
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

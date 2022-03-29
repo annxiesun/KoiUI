@@ -23,6 +23,8 @@ interface Color {
 interface Button {
   base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
   text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  accentLeft: StyleProp<any>;
+  accentRight: StyleProp<any>;
 }
 
 interface IconButton {

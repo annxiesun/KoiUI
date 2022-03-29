@@ -9,6 +9,7 @@ interface SelectItemProps {
   value: number;
   selected?: boolean;
   label: string;
+  icon: string;
   handleChange?: (i: number) => void;
 }
 
@@ -17,6 +18,7 @@ const SelectItem: FC<SelectItemProps> = ({
   label,
   handleChange,
   value,
+  icon,
   ...props
 }) => {
   var theme = useTheme();
@@ -35,7 +37,12 @@ const SelectItem: FC<SelectItemProps> = ({
         style={[styles[selected ? 'active' : 'default'].text]}>
         {label}
       </Typography>
-      {selected && <Icon name="checkmark-outline" style={styles.active.icon} />}
+      {selected && (
+        <Icon
+          name={icon}
+          style={styles[selected ? 'active' : 'default'].icon}
+        />
+      )}
     </TouchableOpacity>
   );
 };

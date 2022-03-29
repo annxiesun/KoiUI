@@ -45,9 +45,22 @@ const App: () => ReactNode = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ThemeProvider value={theme2}>
         <View style={styles.view}>
-          <Select value={0} label={'hello'}>
+          <Select
+            accentLeft={
+              <Icon width={24} height={24} name="bar-chart-2-outline" />
+            }
+            cardHeight={200}
+            value={0}
+            label={'hello'}>
             {options.map((option, i) => {
-              return <SelectItem key={option} value={i} label={option} />;
+              return (
+                <SelectItem
+                  icon="checkmark-outline"
+                  key={option}
+                  value={i}
+                  label={option}
+                />
+              );
             })}
           </Select>
           <Button variant="default">Filled</Button>
@@ -80,9 +93,10 @@ const App: () => ReactNode = () => {
 
 const styles = StyleSheet.create({
   view: {
+    /*
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'flex-start',*/
 
     width: '100%',
   },

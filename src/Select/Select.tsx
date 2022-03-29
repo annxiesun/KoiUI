@@ -9,6 +9,9 @@ interface SelectProps {
   children?: React.ReactNode | React.ReactNode[];
   value: number;
   label: string;
+  cardHeight: number;
+  accentLeft?: React.ReactNode;
+  accentRight?: React.ReactNode;
   handleChange?: (i: number) => void;
 }
 
@@ -17,6 +20,9 @@ const Select: FC<SelectProps> = ({
   handleChange,
   value,
   label,
+  cardHeight,
+  accentRight,
+  accentLeft,
   ...props
 }) => {
   var theme = useTheme();
@@ -33,10 +39,13 @@ const Select: FC<SelectProps> = ({
         onPress={() =>
           refRBSheet.current !== null && refRBSheet?.current?.open()
         }
+        accentLeft={accentLeft}
+        accentRight={accentRight}
         {...props}>
         {label}
       </Button>
       <RBSheet
+        height={cardHeight}
         customStyles={{
           wrapper: styles.wrapper,
           container: styles.base,

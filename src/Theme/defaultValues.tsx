@@ -1,4 +1,5 @@
-import {Theme, createTheme} from './';
+import {Theme} from './theme';
+import {createTheme} from './themeHooks';
 
 export const defaultValues: Theme = createTheme({
   typography: {

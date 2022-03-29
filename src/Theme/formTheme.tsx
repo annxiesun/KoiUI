@@ -1,4 +1,6 @@
-import {Theme, createTheme} from '.';
+import {Theme} from './theme';
+import {createTheme} from './themeHooks';
+
 import {defaultValues} from './defaultValues';
 
 export const defaultFormTheme: Theme = createTheme({
@@ -9,9 +11,17 @@ export const defaultFormTheme: Theme = createTheme({
           backgroundColor: defaultValues.palette.primary.default,
           display: 'flex',
           flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
         },
         text: {
           color: 'white',
+        },
+        accentLeft: {
+          fill: defaultValues.palette.basic[1000],
+        },
+        accentRight: {
+          fill: defaultValues.palette.basic[1000],
         },
       },
       outline: {
@@ -21,46 +31,77 @@ export const defaultFormTheme: Theme = createTheme({
           borderColor: defaultValues.palette.primary.default,
           display: 'flex',
           flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
         },
         text: {
           color: defaultValues.palette.primary.default,
+        },
+        accentLeft: {
+          fill: defaultValues.palette.primary.default,
+        },
+        accentRight: {
+          fill: defaultValues.palette.primary.default,
         },
       },
       ghost: {
         base: {
           display: 'flex',
           flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
         },
         text: {
           color: defaultValues.palette.primary.default,
         },
+        accentLeft: {
+          fill: defaultValues.palette.primary.default,
+        },
+        accentRight: {
+          fill: defaultValues.palette.primary.default,
+        },
       },
       small: {
         base: {
-          alignItems: 'center',
           paddingVertical: defaultValues.constants.spacing[1],
           paddingHorizontal: defaultValues.constants.spacing[2],
           borderRadius: defaultValues.constants.borderRadius[3],
         },
         text: {},
+        accentLeft: {
+          marginRight: defaultValues.constants.spacing[0],
+        },
+        accentRight: {
+          marginLeft: defaultValues.constants.spacing[0],
+        },
       },
       medium: {
         base: {
-          alignItems: 'center',
-          paddingVertical: defaultValues.constants.spacing[1],
+          paddingVertical: defaultValues.constants.spacing[2],
           paddingHorizontal: defaultValues.constants.spacing[4],
           borderRadius: defaultValues.constants.borderRadius[3],
         },
         text: {},
+        accentLeft: {
+          marginRight: defaultValues.constants.spacing[1],
+        },
+        accentRight: {
+          marginLeft: defaultValues.constants.spacing[1],
+        },
       },
       large: {
         base: {
-          alignItems: 'center',
-          paddingVertical: defaultValues.constants.spacing[2],
+          paddingVertical: defaultValues.constants.spacing[3],
           paddingHorizontal: defaultValues.constants.spacing[5],
           borderRadius: defaultValues.constants.borderRadius[3],
         },
         text: {},
+        accentLeft: {
+          marginRight: defaultValues.constants.spacing[2],
+        },
+        accentRight: {
+          marginLeft: defaultValues.constants.spacing[2],
+        },
       },
     },
 
@@ -68,6 +109,7 @@ export const defaultFormTheme: Theme = createTheme({
       default: {
         base: {
           backgroundColor: defaultValues.palette.primary.default,
+          alignSelf: 'flex-start',
         },
         icon: {
           fill: defaultValues.palette.basic[1000],
@@ -78,13 +120,16 @@ export const defaultFormTheme: Theme = createTheme({
           backgroundColor: 'transparent',
           borderWidth: 1,
           borderColor: defaultValues.palette.primary.default,
+          alignSelf: 'flex-start',
         },
         icon: {
           fill: defaultValues.palette.primary.default,
         },
       },
       ghost: {
-        base: {},
+        base: {
+          alignSelf: 'flex-start',
+        },
         icon: {
           fill: defaultValues.palette.primary.default,
         },
@@ -151,7 +196,11 @@ export const defaultFormTheme: Theme = createTheme({
         text: {
           color: defaultValues.palette.basic[300],
         },
-        icon: {},
+        icon: {
+          fill: 'transparent',
+          width: 18,
+          height: 18,
+        },
       },
       active: {
         base: {
@@ -164,8 +213,8 @@ export const defaultFormTheme: Theme = createTheme({
         text: {color: defaultValues.palette.primary.default},
         icon: {
           fill: defaultValues.palette.primary.default,
-          width: 18,
-          height: 18,
+          width: 24,
+          height: 24,
         },
       },
     },
