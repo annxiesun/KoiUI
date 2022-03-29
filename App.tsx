@@ -38,7 +38,7 @@ const App: () => ReactNode = () => {
       },
     },
   });
-  const icon = <Icon name="search" fill="grey" />;
+  const icon = <Icon name="search" />;
   const options = ['Recent', 'Popular', 'Hot'];
   return (
     <SafeAreaView>

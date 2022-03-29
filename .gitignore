@@ -1,3 +1,8 @@
+ios/
+android/
+__tests__/
+.bundle/
+
 # OSX
 #
 .DS_Store
@@ -58,8 +63,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-
-/ios
-/android
-/__tests__
-/.bundle
