@@ -1,7 +1,7 @@
 import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native';
-import {Typography} from '..';
+import {Icon} from '..';
 import {useTheme} from '../Theme/theme';
 import defaultTheme from '../Theme/defaultTheme';
 
@@ -13,51 +13,32 @@ interface ButtonProps {
   onPress?: () => void;
   color?: string;
   status?: string;
-  accentLeft?: React.ReactNode;
-  accentRight?: React.ReactNode;
+  name?: string;
 }
 
 const Button: FC<ButtonProps> = ({
   variant,
   size,
-  children,
   style,
   onPress,
-  accentLeft,
-  accentRight,
+  name,
   ...other
 }): JSX.Element => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.override.KoiButton;
-
-  let typography;
-
-  switch (size) {
-    case 'small':
-      typography = 'body2';
-      break;
-    case 'large':
-      typography = 'h3';
-      break;
-    default:
-      typography = 'body1';
-  }
+  const styles = theme.override.KoiIconButton;
 
   return (
     <TouchableOpacity
       {...other}
       onPress={onPress}
       style={[style, styles[variant].base, styles[size].base]}>
-      {accentLeft && accentLeft}
-      <Typography
-        variant={typography}
-        style={[styles[variant].text, styles[size].text]}>
-        {children}
-      </Typography>
-      {accentRight && accentRight}
+      <Icon
+        name={name}
+        style={{...styles[variant].icon, ...styles[size].icon}}
+      />
     </TouchableOpacity>
   );
 };
@@ -68,8 +49,7 @@ Button.propTypes = {
   style: PropTypes.object,
   variant: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
-  accentLeft: PropTypes.node,
-  accentRight: PropTypes.node,
+  name: PropTypes.string.isRequired,
 };
 
 Button.defaultProps = {

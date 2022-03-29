@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 import {View, TextInput, StyleSheet} from 'react-native';
 import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
-import Icon from '../Icon';
 
 interface InputProps {
   placeholder?: string;
-  iconLeft?: string;
-  iconRight?: string;
+  accentLeft?: React.ReactNode;
+  accentRight?: React.ReactNode;
   onChangeText?: (text: string) => void;
   value?: string;
 }
 
 const Input: FC<InputProps> = ({
   placeholder,
-  iconLeft,
-  iconRight,
+  accentLeft,
+  accentRight,
   onChangeText,
   value,
   ...props
@@ -29,7 +28,7 @@ const Input: FC<InputProps> = ({
 
   return (
     <View style={[const_styles.view, styles.base]}>
-      {iconLeft && <Icon style={styles.iconLeft} name={iconLeft} size={32} />}
+      <View style={styles.accentLeft}>{accentLeft && accentLeft}</View>
       <TextInput
         placeholder={placeholder}
         style={[const_styles.input, styles.text]}
@@ -37,7 +36,7 @@ const Input: FC<InputProps> = ({
         value={value}
         {...props}
       />
-      {iconRight && <Icon style={styles.iconRight} name={iconLeft} size={32} />}
+      <View>{accentRight && accentRight}</View>
     </View>
   );
 };
@@ -46,8 +45,8 @@ export default Input;
 
 Input.propTypes = {
   placeholder: PropTypes.string,
-  iconLeft: PropTypes.string,
-  iconRight: PropTypes.string,
+  accentLeft: PropTypes.node,
+  accentRight: PropTypes.node,
   onChangeText: PropTypes.func,
   value: PropTypes.string,
 };

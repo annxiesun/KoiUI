@@ -11,4 +11,4 @@ const createTheme = (theme1: Theme, theme2?: Theme): Theme => {
   return merge(copy_theme1, copy_theme2);
 };
 
-export default createTheme;
+export {createTheme};

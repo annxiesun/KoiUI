@@ -7,38 +7,23 @@ import {ImageStyle, StyleProp, TextStyle, ViewStyle} from 'react-native';
 
 interface IconProps {
   name?: string;
-  fill?: string;
-  size?: number;
   style?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
 }
 
-const Icon: FC<IconProps> = ({name, fill, size, style, ...props}) => {
+const Icon: FC<IconProps> = ({name, style, ...props}) => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
   }
 
-  return (
-    <EvaIcon
-      style={style}
-      fill={fill}
-      height={size}
-      width={size}
-      name={name}
-      {...props}
-    />
-  );
+  const styles = theme.override.KoiIcon.default;
+  return <EvaIcon style={[styles.base, style]} name={name} {...props} />;
 };
 
 export default Icon;
 
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
-  fill: PropTypes.string,
-  size: PropTypes.number,
 };
 
-Icon.defaultProps = {
-  fill: 'black',
-  size: 32,
-};
+Icon.defaultProps = {};

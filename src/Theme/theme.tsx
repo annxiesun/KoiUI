@@ -25,13 +25,32 @@ interface Button {
   text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
 }
 
-interface Icon {}
+interface IconButton {
+  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  icon: StyleProp<any>;
+}
+
+interface Icon {
+  base: StyleProp<any>;
+}
 
 interface Input {
   base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
   text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  iconLeft: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  iconRight: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  accentLeft: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  accentRight: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+}
+
+interface Select {
+  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  wrapper: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  draggableIcon: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+}
+
+interface SelectItem {
+  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  icon: StyleProp<any>;
 }
 
 interface KoiButton {
@@ -43,12 +62,31 @@ interface KoiButton {
   large: Button;
 }
 
+interface KoiIconButton {
+  default: IconButton;
+  outline: IconButton;
+  ghost: IconButton;
+  small: IconButton;
+  medium: IconButton;
+  large: IconButton;
+}
+
 interface KoiIcon {
   default: Icon;
 }
 
 interface KoiInput {
   default: Input;
+  active: Input;
+}
+
+interface KoiSelect {
+  default: Select;
+}
+
+interface KoiSelectItem {
+  default: SelectItem;
+  active: SelectItem;
 }
 
 interface Palette {
@@ -56,6 +94,7 @@ interface Palette {
   success: Color;
   warning: Color;
   error: Color;
+  basic: Color;
 }
 
 interface Typography {
@@ -67,14 +106,18 @@ interface Typography {
 }
 
 interface Override {
-  KoiButton: KoiButton;
-  KoiIcon: KoiIcon;
-  KoiInput: KoiInput;
+  KoiButton?: KoiButton;
+  KoiIcon?: KoiIcon;
+  KoiInput?: KoiInput;
+  KoiIconButton?: KoiIconButton;
+  KoiSelect?: KoiSelect;
+  KoiSelectItem?: KoiSelectItem;
 }
 export interface Theme {
   palette?: Palette;
   typography?: Typography;
   override?: Override;
+  constants?: any;
 }
 
 export const [useTheme, ThemeProvider] = createCtx<Theme>();

@@ -15,7 +15,16 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {Button, ThemeProvider, Typography, Icon, Input} from './src';
+import {
+  Button,
+  ThemeProvider,
+  Typography,
+  Icon,
+  IconButton,
+  Input,
+  Select,
+  SelectItem,
+} from './src';
 import {defaultTheme, createTheme} from './src/Theme';
 
 const App: () => ReactNode = () => {
@@ -26,32 +35,44 @@ const App: () => ReactNode = () => {
       body1: {
         fontFamily: 'Poppins',
         fontWeight: '600',
-        fontSize: 29,
       },
     },
   });
-
+  const icon = <Icon name="search" fill="grey" />;
+  const options = ['Recent', 'Popular', 'Hot'];
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ThemeProvider value={theme2}>
         <View style={styles.view}>
+          <Select value={0} label={'hello'}>
+            {options.map((option, i) => {
+              return <SelectItem key={option} value={i} label={option} />;
+            })}
+          </Select>
           <Button variant="default">Filled</Button>
           <Button variant="outline">Outline</Button>
           <Button variant="ghost">Ghost</Button>
           <Button size="small">Smallll</Button>
-          <Button variant="outline" size="large">
+          <Button
+            variant="outline"
+            size="large"
+            accentRight={icon}
+            accentLeft={icon}>
             Large
           </Button>
           <Button size="large">Large</Button>
-          <Icon name="github" fill="black" />
+          <IconButton name="github" />
+          <IconButton size="small" name="search" />
+          <IconButton size="large" name="settings" />
+          <Icon name="settings" />
         </View>
         <Typography variant="h1">Header1</Typography>
         <Typography variant="h2">Header2</Typography>
         <Typography variant="h3">Header3</Typography>
         <Typography variant="body1">body1</Typography>
         <Typography variant="body2">body2</Typography>
-        <Input iconLeft="github" />
+        <Input placeholder="Search" accentLeft={<Icon name="search" />} />
       </ThemeProvider>
     </SafeAreaView>
   );
@@ -61,6 +82,7 @@ const styles = StyleSheet.create({
   view: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
 
     width: '100%',
   },

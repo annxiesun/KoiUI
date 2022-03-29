@@ -3,6 +3,18 @@ import Button from './Button';
 import {useTheme, ThemeProvider} from './Theme';
 import Typography from './Typography';
 import Icon from './Icon';
+import IconButton from './IconButton';
 import Input from './Input';
+import {Select, SelectItem} from './Select';
 
-export {Button, useTheme, ThemeProvider, Typography, Icon, Input};
+export {
+  Button,
+  useTheme,
+  ThemeProvider,
+  Typography,
+  Select,
+  SelectItem,
+  Icon,
+  IconButton,
+  Input,
+};

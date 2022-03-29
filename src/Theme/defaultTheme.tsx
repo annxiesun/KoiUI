@@ -1,133 +1,61 @@
-import {Theme} from './theme';
-import createTheme from './createTheme';
+import {defaultValues} from './defaultValues';
+import {defaultFormTheme} from './formTheme';
+import {createTheme, Theme} from './';
 
-const defaultPalette: Theme = createTheme({
-  palette: {
-    success: {
-      light: '#F0FDF6',
-      default: '#3AE789',
-    },
-    warning: {
-      light: '#FFD37E',
-      default: '#FFFBF2',
-    },
-    error: {
-      light: '#FFEEEE',
-      default: '#FF5858',
-    },
-    primary: {
-      light: '#EEF6FF',
-      default: '#58A5FF',
-    },
-  },
-});
-
-const defaultTheme: Theme = createTheme(defaultPalette, {
-  typography: {
-    h1: {
-      fontFamily: 'Poppins',
-      fontWeight: '600',
-      fontSize: 48,
-    },
-    h2: {
-      fontFamily: 'Poppins',
-      fontWeight: '600',
-      fontSize: 36,
-    },
-    h3: {
-      fontFamily: 'Poppins',
-      fontWeight: '500',
-      fontSize: 24,
-    },
-    body1: {
-      fontFamily: 'Poppins',
-      fontWeight: '400',
-      fontSize: 16,
-    },
-    body2: {
-      fontFamily: 'Poppins',
-      fontWeight: '400',
-      fontSize: 14,
-    },
-  },
+const defaultTheme1: Theme = createTheme(defaultValues, {
   override: {
-    KoiButton: {
+    KoiIcon: {
       default: {
         base: {
-          backgroundColor: defaultPalette.palette.primary.default,
-        },
-        text: {
-          color: 'white',
-        },
-      },
-      outline: {
-        base: {
-          backgroundColor: 'transparent',
-          borderWidth: 1,
-          borderColor: defaultPalette.palette.primary.default,
-        },
-        text: {
-          color: defaultPalette.palette.primary.default,
+          fill: defaultValues.palette.primary.default,
+          width: 32,
+          height: 32,
         },
       },
-      ghost: {
-        base: {},
-        text: {
-          color: defaultPalette.palette.primary.default,
-        },
-      },
-      small: {
-        base: {
-          alignItems: 'center',
-          paddingVertical: 10,
-          paddingHorizontal: 15,
-          borderRadius: 4,
-        },
-        text: {},
-      },
-      medium: {
-        base: {
-          alignItems: 'center',
-          paddingVertical: 10,
-          paddingHorizontal: 30,
-          borderRadius: 4,
-        },
-        text: {},
-      },
-      large: {
-        base: {
-          alignItems: 'center',
-          paddingVertical: 10,
-          paddingHorizontal: 40,
-          borderRadius: 4,
-        },
-        text: {},
-      },
-    },
-    KoiIcon: {
-      default: {},
     },
     KoiInput: {
       default: {
         base: {
           color: 'black',
           borderWidth: 0,
-          backgroundColor: 'lightgrey',
+          backgroundColor: defaultValues.palette.basic['800'],
+          padding: defaultValues.constants.spacing[1],
+          borderRadius: defaultValues.constants.borderRadius[4],
+        },
+        text: {
+          fontFamily: 'Poppins',
+          fontSize: 18,
+          color: defaultValues.palette.basic['500'],
+        },
+        accentLeft: {
+          marginRight: defaultValues.constants.spacing[2],
+        },
+        accentRight: {
+          marginLeft: defaultValues.constants.spacing[2],
+        },
+      },
+      active: {
+        base: {
+          color: 'black',
+          borderWidth: 0,
+          backgroundColor: defaultValues.palette.basic['800'],
           padding: 8,
+          borderRadius: defaultValues.constants.borderRadius[4],
         },
         text: {
           fontFamily: 'Poppins',
           fontSize: 16,
         },
-        iconLeft: {
-          marginRight: 16,
+        accentLeft: {
+          marginRight: defaultValues.constants.spacing[2],
         },
-        iconRight: {
-          marginLeft: 16,
+        accentRight: {
+          marginLeft: defaultValues.constants.spacing[2],
         },
       },
     },
   },
 });
 
+const defaultTheme = createTheme(defaultFormTheme, defaultTheme1);
 export default defaultTheme;
