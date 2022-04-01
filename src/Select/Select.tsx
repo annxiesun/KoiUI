@@ -29,7 +29,7 @@ const Select: FC<SelectProps> = ({
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.override.KoiSelect.default;
+  const styles = theme.components.KoiSelect.default;
   const refRBSheet = useRef<any>(null);
 
   return (

@@ -24,7 +24,7 @@ const Input: FC<InputProps> = ({
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.override.KoiInput.default;
+  const styles = theme.components.KoiInput.default;
 
   return (
     <View style={[const_styles.view, styles.base]}>

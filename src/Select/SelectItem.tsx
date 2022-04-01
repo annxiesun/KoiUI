@@ -25,7 +25,7 @@ const SelectItem: FC<SelectItemProps> = ({
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.override.KoiSelectItem;
+  const styles = theme.components.KoiSelectItem;
 
   return (
     <TouchableOpacity

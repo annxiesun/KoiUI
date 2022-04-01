@@ -14,6 +14,7 @@ import {
   StyleSheet,
   useColorScheme,
   View,
+  ScrollView,
 } from 'react-native';
 import {
   Button,
@@ -37,6 +38,18 @@ const App: () => ReactNode = () => {
         fontWeight: '600',
       },
     },
+    palette: {
+      primary: {
+        default: 'black',
+      },
+    },
+    components: {
+      KoiButton: {
+        defaultProps: {
+          variant: 'outline',
+        },
+      },
+    },
   });
   const icon = <Icon name="search" />;
   const options = ['Recent', 'Popular', 'Hot'];
@@ -44,48 +57,64 @@ const App: () => ReactNode = () => {
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ThemeProvider value={theme2}>
-        <View style={styles.view}>
-          <Select
-            accentLeft={
-              <Icon width={24} height={24} name="bar-chart-2-outline" />
-            }
-            cardHeight={200}
-            value={0}
-            label={'hello'}>
-            {options.map((option, i) => {
-              return (
-                <SelectItem
-                  icon="checkmark-outline"
-                  key={option}
-                  value={i}
-                  label={option}
-                />
-              );
-            })}
-          </Select>
-          <Button variant="default">Filled</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button size="small">Smallll</Button>
+        <ScrollView>
           <Button
-            variant="outline"
-            size="large"
-            accentRight={icon}
-            accentLeft={icon}>
-            Large
+            sx={theme => ({
+              base: {
+                backgroundColor: theme.palette.primary.default,
+                marginBottom: 50,
+              },
+              text: {
+                color: theme.palette.basic[9],
+              },
+            })}>
+            Default Props
           </Button>
-          <Button size="large">Large</Button>
-          <IconButton name="github" />
-          <IconButton size="small" name="search" />
-          <IconButton size="large" name="settings" />
-          <Icon name="settings" />
-        </View>
-        <Typography variant="h1">Header1</Typography>
-        <Typography variant="h2">Header2</Typography>
-        <Typography variant="h3">Header3</Typography>
-        <Typography variant="body1">body1</Typography>
-        <Typography variant="body2">body2</Typography>
-        <Input placeholder="Search" accentLeft={<Icon name="search" />} />
+          <Button>Default Props</Button>
+          {/*<Button variant="filled">Fill</Button>*/}
+          <View style={styles.view}>
+            <Select
+              accentLeft={
+                <Icon width={24} height={24} name="bar-chart-2-outline" />
+              }
+              cardHeight={200}
+              value={0}
+              label={'hello'}>
+              {options.map((option, i) => {
+                return (
+                  <SelectItem
+                    icon="checkmark-outline"
+                    key={option}
+                    value={i}
+                    label={option}
+                  />
+                );
+              })}
+            </Select>
+            {/*             <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button size="small">Smallll</Button>
+            <Button
+              variant="outline"
+              size="large"
+              accentRight={icon}
+              accentLeft={icon}>
+              Large
+            </Button>
+                        <Button size="large">Large</Button>
+            */}
+            <IconButton name="github" />
+            <IconButton size="small" name="search" />
+            <IconButton size="large" name="settings" />
+            <Icon name="settings" />
+          </View>
+          <Typography variant="h1">Header1</Typography>
+          <Typography variant="h2">Header2</Typography>
+          <Typography variant="h3">Header3</Typography>
+          <Typography variant="body1">body1</Typography>
+          <Typography variant="body2">body2</Typography>
+          <Input placeholder="Search" accentLeft={<Icon name="search" />} />
+        </ScrollView>
       </ThemeProvider>
     </SafeAreaView>
   );

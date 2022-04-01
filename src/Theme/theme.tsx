@@ -13,7 +13,7 @@ function createCtx<A extends {} | null>() {
   return [useCtx, ctx.Provider] as const; // 'as const' makes TypeScript infer a tuple
 }
 
-// Usage:
+// Usage?:
 
 // We still have to specify a type, but no default!
 interface Color {
@@ -21,82 +21,90 @@ interface Color {
 }
 
 interface Button {
-  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  accentLeft: StyleProp<any>;
-  accentRight: StyleProp<any>;
+  base?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  accentLeft?: StyleProp<any>;
+  accentRight?: StyleProp<any>;
 }
 
 interface IconButton {
-  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  icon: StyleProp<any>;
+  base?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  icon?: StyleProp<any>;
 }
 
 interface Icon {
-  base: StyleProp<any>;
+  base?: StyleProp<any>;
 }
 
 interface Input {
-  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  accentLeft: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  accentRight: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  base?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  accentLeft?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  accentRight?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
 }
 
 interface Select {
-  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  wrapper: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  draggableIcon: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  base?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  wrapper?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  draggableIcon?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
 }
 
 interface SelectItem {
-  base: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  text: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-  icon: StyleProp<any>;
+  base?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  icon?: StyleProp<any>;
 }
 
 interface KoiButton {
-  default: Button;
-  outline: Button;
-  ghost: Button;
-  small: Button;
-  medium: Button;
-  large: Button;
+  defaultProps?: {
+    variant?: string;
+    size?: string;
+    accentLeft?: React.ReactNode;
+    accentRight?: React.ReactNode;
+  };
+  styleOverrides?: {
+    filled?: Button;
+    outline?: Button;
+    ghost?: Button;
+    small?: Button;
+    medium?: Button;
+    large?: Button;
+  };
 }
 
 interface KoiIconButton {
-  default: IconButton;
-  outline: IconButton;
-  ghost: IconButton;
-  small: IconButton;
-  medium: IconButton;
-  large: IconButton;
+  filled?: IconButton;
+  outline?: IconButton;
+  ghost?: IconButton;
+  small?: IconButton;
+  medium?: IconButton;
+  large?: IconButton;
 }
 
 interface KoiIcon {
-  default: Icon;
+  default?: Icon;
 }
 
 interface KoiInput {
-  default: Input;
-  active: Input;
+  default?: Input;
+  active?: Input;
 }
 
 interface KoiSelect {
-  default: Select;
+  default?: Select;
 }
 
 interface KoiSelectItem {
-  default: SelectItem;
-  active: SelectItem;
+  default?: SelectItem;
+  active?: SelectItem;
 }
 
 interface Palette {
-  primary: Color;
-  success: Color;
-  warning: Color;
-  error: Color;
-  basic: Color;
+  primary?: Color;
+  success?: Color;
+  warning?: Color;
+  error?: Color;
+  basic?: Color;
 }
 
 interface Typography {
@@ -118,7 +126,7 @@ interface Override {
 export interface Theme {
   palette?: Palette;
   typography?: Typography;
-  override?: Override;
+  components?: Override;
   constants?: any;
 }
 

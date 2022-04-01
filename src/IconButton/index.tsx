@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.override.KoiIconButton;
+  const styles = theme.components.KoiIconButton;
 
   return (
     <TouchableOpacity
@@ -53,6 +53,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  variant: 'default',
+  variant: 'filled',
   size: 'medium',
 };

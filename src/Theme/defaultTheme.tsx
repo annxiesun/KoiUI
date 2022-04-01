@@ -4,7 +4,7 @@ import {Theme} from './theme';
 import {createTheme} from './themeHooks';
 
 const defaultTheme1: Theme = createTheme(defaultValues, {
-  override: {
+  components: {
     KoiIcon: {
       default: {
         base: {

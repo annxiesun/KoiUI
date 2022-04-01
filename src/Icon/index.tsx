@@ -16,7 +16,7 @@ const Icon: FC<IconProps> = ({name, style, ...props}) => {
     theme = defaultTheme;
   }
 
-  const styles = theme.override.KoiIcon.default;
+  const styles = theme.components.KoiIcon.default;
   return <EvaIcon style={[styles.base, style]} name={name} {...props} />;
 };
 

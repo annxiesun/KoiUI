@@ -13,7 +13,7 @@ const SOMETHING: FC<SOMETHINGProps> = ({variant}) => {
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.override.KoiButton;
+  const styles = theme.components.KoiButton;
   return (
     <View>
       <Text>Hello</Text>
