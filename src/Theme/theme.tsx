@@ -73,21 +73,38 @@ interface KoiButton {
 }
 
 interface KoiIconButton {
-  filled?: IconButton;
-  outline?: IconButton;
-  ghost?: IconButton;
-  small?: IconButton;
-  medium?: IconButton;
-  large?: IconButton;
+  defaultProps?: {
+    variant?: string;
+    size?: string;
+    accentLeft?: React.ReactNode;
+    accentRight?: React.ReactNode;
+  };
+  styleOverrides?: {
+    filled?: IconButton;
+    outline?: IconButton;
+    ghost?: IconButton;
+    small?: IconButton;
+    medium?: IconButton;
+    large?: IconButton;
+  };
 }
 
 interface KoiIcon {
-  default?: Icon;
+  defaultProps?: {};
+  styleOverrides?: {
+    default?: Icon;
+  };
 }
 
 interface KoiInput {
-  default?: Input;
-  active?: Input;
+  defaultProps?: {
+    accentLeft?: React.ReactNode;
+    accentRight?: React.ReactNode;
+  };
+  styleOverrides?: {
+    default?: Input;
+    active?: Input;
+  };
 }
 
 interface KoiSelect {

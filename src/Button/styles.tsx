@@ -10,12 +10,8 @@ const createStyles = theme => ({
     text: {
       color: 'white',
     },
-    accentLeft: {
-      fill: theme.palette.basic[10],
-    },
-    accentRight: {
-      fill: theme.palette.basic[10],
-    },
+    accentLeft: {},
+    accentRight: {},
   },
   outline: {
     base: {
@@ -30,12 +26,8 @@ const createStyles = theme => ({
     text: {
       color: theme.palette.primary.default,
     },
-    accentLeft: {
-      fill: theme.palette.primary.default,
-    },
-    accentRight: {
-      fill: theme.palette.primary.default,
-    },
+    accentLeft: {},
+    accentRight: {},
   },
   ghost: {
     base: {
@@ -47,12 +39,8 @@ const createStyles = theme => ({
     text: {
       color: theme.palette.primary.default,
     },
-    accentLeft: {
-      fill: theme.palette.primary.default,
-    },
-    accentRight: {
-      fill: theme.palette.primary.default,
-    },
+    accentLeft: {},
+    accentRight: {},
   },
   small: {
     base: {

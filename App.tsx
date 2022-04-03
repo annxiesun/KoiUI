@@ -40,7 +40,7 @@ const App: () => ReactNode = () => {
     },
     palette: {
       primary: {
-        default: 'black',
+        default: 'blue',
       },
     },
     components: {
@@ -51,7 +51,7 @@ const App: () => ReactNode = () => {
       },
     },
   });
-  const icon = <Icon name="search" />;
+  const icon = <Icon name="search" sx={{base: {fill: '#000'}}} />;
   const options = ['Recent', 'Popular', 'Hot'];
   return (
     <SafeAreaView>
@@ -91,7 +91,7 @@ const App: () => ReactNode = () => {
                 );
               })}
             </Select>
-            {/*             <Button variant="outline">Outline</Button>
+            <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
             <Button size="small">Smallll</Button>
             <Button
@@ -101,8 +101,8 @@ const App: () => ReactNode = () => {
               accentLeft={icon}>
               Large
             </Button>
-                        <Button size="large">Large</Button>
-            */}
+            <Button size="large">Large</Button>
+
             <IconButton name="github" />
             <IconButton size="small" name="search" />
             <IconButton size="large" name="settings" />

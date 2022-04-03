@@ -2,57 +2,82 @@ import React, {FC, ReactElement, ReactText} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native';
 import {Icon} from '..';
-import {useTheme} from '../Theme/theme';
+import {Theme, useTheme} from '../Theme/theme';
 import defaultTheme from '../Theme/defaultTheme';
+import createStyles from './styles';
 
-interface ButtonProps {
-  variant?: string;
-  size?: string;
+var merge = require('lodash.merge');
+
+interface IconButtonProps {
+  variant?: 'filled' | 'outline' | 'ghost' | string;
+  size?: 'small' | 'medium' | 'large' | string;
   style?: Object;
   children?: ReactElement | ReactText;
   onPress?: () => void;
   color?: string;
   status?: string;
   name?: string;
+  sx?: ((theme: Theme) => Object) | Object;
 }
 
-const Button: FC<ButtonProps> = ({
+const IconButton: FC<IconButtonProps> = ({
   variant,
   size,
   style,
   onPress,
   name,
+  sx,
   ...other
 }): JSX.Element => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.components.KoiIconButton;
+  const styleOverrides = theme?.components?.KoiIconButton?.styleOverrides;
+
+  let styles = !styleOverrides
+    ? createStyles(theme)
+    : merge(createStyles(theme), theme.components.KoiIconButton.styleOverrides);
+
+  let defaultProps = theme.components.KoiIconButton?.defaultProps;
+
+  if (!variant) variant = defaultProps?.variant || 'filled';
+  if (!size) size = defaultProps?.size || 'medium';
+
+  let inlineStyles;
+  if (typeof sx === 'function') {
+    inlineStyles = sx(theme);
+  } else if (typeof sx === 'object') {
+    inlineStyles = sx;
+  }
 
   return (
     <TouchableOpacity
       {...other}
       onPress={onPress}
-      style={[style, styles[variant].base, styles[size].base]}>
+      style={[
+        styles[variant]?.base,
+        styles[size]?.base,
+        inlineStyles?.base,
+        style,
+      ]}>
       <Icon
         name={name}
-        style={{...styles[variant].icon, ...styles[size].icon}}
+        style={{
+          ...styles[variant]?.icon,
+          ...styles[size]?.icon,
+          ...inlineStyles?.icon,
+        }}
       />
     </TouchableOpacity>
   );
 };
 
-export default Button;
+export default IconButton;
 
-Button.propTypes = {
+IconButton.propTypes = {
   style: PropTypes.object,
-  variant: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  size: PropTypes.string,
   name: PropTypes.string.isRequired,
-};
-
-Button.defaultProps = {
-  variant: 'filled',
-  size: 'medium',
 };

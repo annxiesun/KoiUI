@@ -1,8 +1,11 @@
 import React, {FC} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput, StyleSheet} from 'react-native';
-import {useTheme} from '../Theme';
+import {Theme, useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
+import createStyles from './styles';
+
+var merge = require('lodash.merge');
 
 interface InputProps {
   placeholder?: string;
@@ -10,6 +13,7 @@ interface InputProps {
   accentRight?: React.ReactNode;
   onChangeText?: (text: string) => void;
   value?: string;
+  sx?: ((theme: Theme) => Object) | Object;
 }
 
 const Input: FC<InputProps> = ({
@@ -18,25 +22,41 @@ const Input: FC<InputProps> = ({
   accentRight,
   onChangeText,
   value,
+  sx,
   ...props
 }) => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.components.KoiInput.default;
+  const styleOverrides = theme?.components?.KoiInput?.styleOverrides;
+
+  let styles = !styleOverrides
+    ? createStyles(theme)
+    : merge(createStyles(theme), theme.components.KoiIconButton.styleOverrides);
+
+  let inlineStyles;
+  if (typeof sx === 'function') {
+    inlineStyles = sx(theme);
+  } else if (typeof sx === 'object') {
+    inlineStyles = sx;
+  }
 
   return (
-    <View style={[const_styles.view, styles.base]}>
-      <View style={styles.accentLeft}>{accentLeft && accentLeft}</View>
+    <View style={[const_styles.view, styles.base, inlineStyles?.base]}>
+      <View style={[styles.accentLeft, inlineStyles?.accentLeft]}>
+        {accentLeft && accentLeft}
+      </View>
       <TextInput
         placeholder={placeholder}
-        style={[const_styles.input, styles.text]}
+        style={[const_styles.input, styles.text, inlineStyles?.text]}
         onChangeText={onChangeText}
         value={value}
         {...props}
       />
-      <View>{accentRight && accentRight}</View>
+      <View style={[styles.accentRight, inlineStyles?.accentRight]}>
+        {accentRight && accentRight}
+      </View>
     </View>
   );
 };

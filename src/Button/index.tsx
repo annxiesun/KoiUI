@@ -36,35 +36,21 @@ const Button: FC<ButtonProps> = ({
     theme = defaultTheme;
   }
 
-  const styleOverrides = theme?.components.KoiButton?.styleOverrides;
+  const styleOverrides = theme?.components?.KoiButton?.styleOverrides;
 
   let styles = !styleOverrides
     ? createStyles(theme)
     : merge(createStyles(theme), theme.components.KoiButton.styleOverrides);
 
   let defaultProps = theme.components.KoiButton?.defaultProps;
-  if (defaultProps) {
-    if (!variant) variant = defaultProps.variant || 'filled';
-    if (!size) size = defaultProps.size || 'medium';
-    if (!accentLeft) accentLeft = defaultProps.accentLeft;
-    if (!accentRight) accentRight = defaultProps.accentRight;
-  }
+  if (!variant) variant = defaultProps?.variant || 'filled';
+  if (!size) size = defaultProps?.size || 'medium';
+  if (!accentLeft) accentLeft = defaultProps?.accentLeft;
+  if (!accentRight) accentRight = defaultProps?.accentRight;
 
-  let typography;
-
-  switch (size) {
-    case 'small':
-      typography = 'body2';
-      break;
-    case 'large':
-      typography = 'h3';
-      break;
-    default:
-      typography = 'body1';
-  }
+  let typography = textSizes[size];
 
   let inlineStyles;
-
   if (typeof sx === 'function') {
     inlineStyles = sx(theme);
   } else if (typeof sx === 'object') {
@@ -112,10 +98,16 @@ const Button: FC<ButtonProps> = ({
 
 export default Button;
 
+const textSizes = {
+  small: 'body2',
+  medium: 'body1',
+  large: 'h3',
+};
+
 Button.propTypes = {
   style: PropTypes.object,
-  variant: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  size: PropTypes.string,
   accentLeft: PropTypes.node,
   accentRight: PropTypes.node,
   sx: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
