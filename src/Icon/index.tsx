@@ -1,18 +1,13 @@
 import React, {FC} from 'react';
 import PropTypes from 'prop-types';
-import {Theme, useTheme} from '../Theme';
+import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 import {Icon as EvaIcon} from 'react-native-eva-icons';
-import {StyleProp} from 'react-native';
 import createStyles from './styles';
 
-var merge = require('lodash.merge');
+import {IconProps} from '../Props';
 
-interface IconProps {
-  name?: string;
-  style?: StyleProp<any>;
-  sx?: ((theme: Theme) => Object) | Object;
-}
+var merge = require('lodash.merge');
 
 const Icon: FC<IconProps> = ({name, style, sx, ...props}) => {
   var theme = useTheme();

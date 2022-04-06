@@ -1,24 +1,13 @@
-import React, {FC, ReactElement, ReactText} from 'react';
+import React, {FC} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableOpacity, View} from 'react-native';
 import {Typography} from '..';
-import {useTheme, defaultTheme, Theme} from '../Theme';
+import {useTheme, defaultTheme} from '../Theme';
 import createStyles from './styles';
 
-var merge = require('lodash.merge');
+import {ButtonProps} from '../Props';
 
-interface ButtonProps {
-  variant?: 'filled' | 'outline' | 'ghost' | string;
-  size?: 'small' | 'medium' | 'large' | string;
-  style?: Object;
-  children?: ReactElement | ReactText;
-  onPress?: () => void;
-  color?: string;
-  status?: string;
-  accentLeft?: React.ReactNode;
-  accentRight?: React.ReactNode;
-  sx?: ((theme: Theme) => Object) | Object;
-}
+var merge = require('lodash.merge');
 
 const Button: FC<ButtonProps> = ({
   variant,

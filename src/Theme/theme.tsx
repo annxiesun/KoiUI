@@ -1,6 +1,6 @@
 import {createContext, useContext} from 'react';
 import {StyleProp, ViewStyle, TextStyle, ImageStyle} from 'react-native';
-
+import {ButtonProps, IconButtonProps, IconProps, InputProps} from '../Props';
 function createCtx<A extends {} | null>() {
   const ctx = createContext<A | undefined>(undefined);
   function useCtx() {
@@ -56,12 +56,7 @@ interface SelectItem {
 }
 
 interface KoiButton {
-  defaultProps?: {
-    variant?: string;
-    size?: string;
-    accentLeft?: React.ReactNode;
-    accentRight?: React.ReactNode;
-  };
+  defaultProps?: ButtonProps;
   styleOverrides?: {
     filled?: Button;
     outline?: Button;
@@ -73,12 +68,7 @@ interface KoiButton {
 }
 
 interface KoiIconButton {
-  defaultProps?: {
-    variant?: string;
-    size?: string;
-    accentLeft?: React.ReactNode;
-    accentRight?: React.ReactNode;
-  };
+  defaultProps?: IconButtonProps;
   styleOverrides?: {
     filled?: IconButton;
     outline?: IconButton;
@@ -90,17 +80,14 @@ interface KoiIconButton {
 }
 
 interface KoiIcon {
-  defaultProps?: {};
+  defaultProps?: IconProps;
   styleOverrides?: {
     default?: Icon;
   };
 }
 
 interface KoiInput {
-  defaultProps?: {
-    accentLeft?: React.ReactNode;
-    accentRight?: React.ReactNode;
-  };
+  defaultProps?: InputProps;
   styleOverrides?: {
     default?: Input;
     active?: Input;

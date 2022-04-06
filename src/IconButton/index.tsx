@@ -1,24 +1,14 @@
-import React, {FC, ReactElement, ReactText} from 'react';
+import React, {FC} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native';
 import {Icon} from '..';
-import {Theme, useTheme} from '../Theme/theme';
+import {useTheme} from '../Theme/theme';
 import defaultTheme from '../Theme/defaultTheme';
 import createStyles from './styles';
 
-var merge = require('lodash.merge');
+import {IconButtonProps} from '../Props';
 
-interface IconButtonProps {
-  variant?: 'filled' | 'outline' | 'ghost' | string;
-  size?: 'small' | 'medium' | 'large' | string;
-  style?: Object;
-  children?: ReactElement | ReactText;
-  onPress?: () => void;
-  color?: string;
-  status?: string;
-  name?: string;
-  sx?: ((theme: Theme) => Object) | Object;
-}
+var merge = require('lodash.merge');
 
 const IconButton: FC<IconButtonProps> = ({
   variant,

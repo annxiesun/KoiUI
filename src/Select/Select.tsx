@@ -4,16 +4,7 @@ import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {Button} from '..';
-
-interface SelectProps {
-  children?: React.ReactNode | React.ReactNode[];
-  value: number;
-  label: string;
-  cardHeight: number;
-  accentLeft?: React.ReactNode;
-  accentRight?: React.ReactNode;
-  handleChange?: (i: number) => void;
-}
+import {SelectProps} from '../Props';
 
 const Select: FC<SelectProps> = ({
   children,

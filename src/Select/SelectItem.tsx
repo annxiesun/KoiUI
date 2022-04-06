@@ -4,14 +4,7 @@ import {TouchableOpacity} from 'react-native';
 import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 import {Typography, Icon} from '..';
-
-interface SelectItemProps {
-  value: number;
-  selected?: boolean;
-  label: string;
-  icon: string;
-  handleChange?: (i: number) => void;
-}
+import {SelectItemProps} from '../Props';
 
 const SelectItem: FC<SelectItemProps> = ({
   selected,

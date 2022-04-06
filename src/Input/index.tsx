@@ -1,20 +1,13 @@
 import React, {FC} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput, StyleSheet} from 'react-native';
-import {Theme, useTheme} from '../Theme';
+import {useTheme} from '../Theme';
 import defaultTheme from '../Theme/defaultTheme';
 import createStyles from './styles';
 
-var merge = require('lodash.merge');
+import {InputProps} from '../Props';
 
-interface InputProps {
-  placeholder?: string;
-  accentLeft?: React.ReactNode;
-  accentRight?: React.ReactNode;
-  onChangeText?: (text: string) => void;
-  value?: string;
-  sx?: ((theme: Theme) => Object) | Object;
-}
+var merge = require('lodash.merge');
 
 const Input: FC<InputProps> = ({
   placeholder,
