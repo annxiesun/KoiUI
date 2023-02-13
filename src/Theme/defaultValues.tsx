@@ -61,7 +61,7 @@ export const defaultValues: Theme = createTheme({
   },
   constants: {
     borderRadius: [0, 4, 8, 12, 16],
-    spacing: [0, 8, 16, 24, 32, 40, 48, 56, 64],
+    spacing: [0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64],
     dropShadow: [''],
     innerShadow: [''],
   },

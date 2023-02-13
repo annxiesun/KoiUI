@@ -1,6 +1,6 @@
 import {createContext, useContext} from 'react';
 import {StyleProp, ViewStyle, TextStyle, ImageStyle} from 'react-native';
-import {ButtonProps, IconButtonProps, IconProps, InputProps} from '../Props';
+import {ButtonProps, IconButtonProps, IconProps, InputProps, CardProps} from '../Props';
 function createCtx<A extends {} | null>() {
   const ctx = createContext<A | undefined>(undefined);
   function useCtx() {
@@ -55,6 +55,12 @@ interface SelectItem {
   icon?: StyleProp<any>;
 }
 
+interface Card {
+  base?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  header?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+  text?: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+}
+
 interface KoiButton {
   defaultProps?: ButtonProps;
   styleOverrides?: {
@@ -103,6 +109,13 @@ interface KoiSelectItem {
   active?: SelectItem;
 }
 
+interface KoiCard {
+  defaultProps?: CardProps;
+  styleOverrides?: {
+    default?: Card
+  };
+}
+
 interface Palette {
   primary?: Color;
   success?: Color;
@@ -126,6 +139,7 @@ interface Override {
   KoiIconButton?: KoiIconButton;
   KoiSelect?: KoiSelect;
   KoiSelectItem?: KoiSelectItem;
+  KoiCard?: KoiCard;
 }
 export interface Theme {
   palette?: Palette;

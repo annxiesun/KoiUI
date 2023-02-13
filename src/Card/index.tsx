@@ -2,31 +2,70 @@ import React, {FC} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 import {useTheme} from '../Theme';
+import createStyles from './styles';
 import defaultTheme from '../Theme/defaultTheme';
+import {CardProps} from '../Props';
+import Typography from '../Typography';
 
-interface SOMETHINGProps {
-  variant?: string;
-}
+var merge = require('lodash.merge');
 
-const SOMETHING: FC<SOMETHINGProps> = ({variant}) => {
+const Card: FC<CardProps> = ({
+  variant,
+  transparency,
+  style,
+  sx,
+  header,
+  body,
+  ...props
+}) => {
   var theme = useTheme();
   if (theme === undefined) {
     theme = defaultTheme;
   }
-  const styles = theme.components.KoiButton;
+
+  const styleOverrides = theme?.components?.KoiCard?.styleOverrides;
+
+  let styles = !styleOverrides
+    ? createStyles(theme)
+    : merge(createStyles(theme), styleOverrides);
+
+  let inlineStyles;
+  if (typeof sx === 'function') {
+    inlineStyles = sx(theme);
+  } else if (typeof sx === 'object') {
+    inlineStyles = sx;
+  }
+
+  let defaultProps = theme.components.KoiCard?.defaultProps;
+  if (!transparency) transparency = defaultProps?.transparency || 3;
+  if (!variant) variant = defaultProps?.variant || 'default';
+
   return (
-    <View>
-      <Text>Hello</Text>
+    <View
+      style={[
+        inlineStyles?.base,
+        style,
+        styles[variant]?.base,
+        styles[variant]?.base[`t${transparency}`],
+      ]}
+      {...props}>
+      <Typography style={[inlineStyles?.header]} variant="h3">
+        {header}
+      </Typography>
+
+      <Typography style={[inlineStyles?.text]} variant="body2">
+        {body}
+      </Typography>
     </View>
   );
 };
 
-export default SOMETHING;
+export default Card;
 
-SOMETHING.propTypes = {
-  variant: PropTypes.string.isRequired,
+Card.propTypes = {
+  transparency: PropTypes.number,
 };
 
-SOMETHING.defaultProps = {
-  variant: 'default',
+Card.defaultProps = {
+  transparency: 3,
 };

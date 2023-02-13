@@ -6,6 +6,7 @@ import Icon from './Icon';
 import IconButton from './IconButton';
 import Input from './Input';
 import {Select, SelectItem} from './Select';
+import Card from './Card';
 
 export {
   Button,
@@ -17,4 +18,5 @@ export {
   Icon,
   IconButton,
   Input,
+  Card,
 };

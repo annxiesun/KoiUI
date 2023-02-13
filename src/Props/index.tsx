@@ -1,5 +1,5 @@
 import {ReactElement, ReactText} from 'react';
-import {StyleProp} from 'react-native';
+import {ViewProps,StyleProp} from 'react-native';
 import {Theme} from '../Theme';
 
 export interface ButtonProps {
@@ -58,4 +58,12 @@ export interface SelectItemProps {
   label: string;
   icon: string;
   handleChange?: (i: number) => void;
+}
+
+export interface CardProps extends ViewProps {
+  variant?: 'light' | 'dark' | string;
+  transparency?: number,
+  sx?: ((theme: Theme) => Object) | Object;
+  header?: string;
+  body?: string;
 }
